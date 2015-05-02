@@ -22,8 +22,13 @@ import "printer.dart";
 import "resolver.dart";
 import "var.dart";
 
-void main() {
-  List<String> args = new Options().arguments;
+import 'package:args/args.dart';
+
+void main(List<String> arguments) {
+
+  var parser = new ArgParser();
+
+  List<String> args = parser.parse(arguments).rest;
   bool printResolution = (args.length == 2 && args[0] == "--print-resolution");
   if (args.length != 1 && !printResolution) {
     printUsage();
